@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Recycler App</string>
+    <string name="tab_text_1">Actual</string>
+    <string name="tab_text_2">History</string>
+    <string name="tab_text_3">Total</string>
+    <string name="create_user">Create another user</string>
+
+</resources>
