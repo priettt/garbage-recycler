@@ -1,5 +1,7 @@
 package com.unicen.garbage;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
@@ -9,9 +11,16 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.unicen.garbage.ui.main.ActualFragment;
+import com.unicen.garbage.ui.main.CreateUserActivity;
+import com.unicen.garbage.ui.main.HistoryFragment;
 import com.unicen.garbage.ui.main.SectionsPagerAdapter;
+import com.unicen.garbage.ui.main.TotalFragment;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements
+        TotalFragment.OnFragmentInteractionListener,
+        ActualFragment.OnFragmentInteractionListener,
+        HistoryFragment.OnFragmentInteractionListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,9 +41,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == R.id.action_settings) {
-            Log.d("Hola", "Hola");
+        if (item.getItemId() == R.id.create_user_action) {
+            this.startActivity(new Intent(this, CreateUserActivity.class));
         }
         return true;
+    }
+
+    @Override public void onFragmentInteraction(Uri uri) {
+        //something
     }
 }
