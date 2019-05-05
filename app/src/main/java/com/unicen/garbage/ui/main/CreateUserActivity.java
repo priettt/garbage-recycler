@@ -15,6 +15,13 @@ public class CreateUserActivity extends AppCompatActivity {
         ActionBar supportActionBar = getSupportActionBar();
         if (supportActionBar != null) {
             supportActionBar.setTitle(this.getResources().getString(R.string.create_user_title));
+            supportActionBar.setDisplayHomeAsUpEnabled(true);
+            supportActionBar.setDisplayShowHomeEnabled(true);
         }
+    }
+
+    @Override public boolean onSupportNavigateUp() {
+        finish();
+        return true;
     }
 }
