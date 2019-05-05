@@ -1,39 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".ui.main.CreateUserActivity">
 
-    <EditText
-        android:id="@+id/name"
-        android:layout_width="wrap_content"
+    <android.support.design.widget.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Enter text"
-        app:layout_constraintBottom_toTopOf="@id/surname"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_marginStart="@dimen/create_user_margin_horizontal"
+        android:layout_marginTop="@dimen/top_field_margin_top"
+        android:layout_marginEnd="@dimen/create_user_margin_horizontal"
+        android:hint="@string/first_name">
 
-    <EditText
-        android:id="@+id/surname"
-        android:layout_width="wrap_content"
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/first_name_edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Enter text"
-        app:layout_constraintBottom_toTopOf="@id/age"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/name" />
+        android:layout_marginStart="@dimen/create_user_margin_horizontal"
+        android:layout_marginTop="@dimen/top_field_margin_top"
+        android:layout_marginEnd="@dimen/create_user_margin_horizontal"
+        android:hint="@string/last_name">
 
-    <EditText
-        android:id="@+id/age"
-        android:layout_width="wrap_content"
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/last_name_edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Enter text"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/surname" />
+        android:layout_marginStart="@dimen/create_user_margin_horizontal"
+        android:layout_marginTop="@dimen/top_field_margin_top"
+        android:layout_marginEnd="@dimen/create_user_margin_horizontal"
+        android:hint="@string/email">
 
-</android.support.constraint.ConstraintLayout>
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/email_edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/create_user_margin_horizontal"
+        android:layout_marginTop="@dimen/top_field_margin_top"
+        android:layout_marginEnd="@dimen/create_user_margin_horizontal"
+        android:hint="@string/username">
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/username_edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </android.support.design.widget.TextInputLayout>
+
+</LinearLayout>

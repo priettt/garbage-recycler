@@ -1,4 +1,4 @@
-package com.unicen.garbage;
+package com.unicen.garbage.ui.main;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.unicen.garbage.R;
 import com.unicen.garbage.ui.main.ActualFragment;
 import com.unicen.garbage.ui.main.CreateUserActivity;
 import com.unicen.garbage.ui.main.HistoryFragment;
