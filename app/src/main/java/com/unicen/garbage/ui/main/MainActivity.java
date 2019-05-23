@@ -12,6 +12,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.unicen.garbage.R;
+import com.unicen.garbage.domain.entities.Recycling;
 import com.unicen.garbage.ui.main.ActualFragment;
 import com.unicen.garbage.ui.main.CreateUserActivity;
 import com.unicen.garbage.ui.main.HistoryFragment;
@@ -20,7 +21,7 @@ import com.unicen.garbage.ui.main.TotalFragment;
 
 public class MainActivity extends AppCompatActivity implements
         TotalFragment.OnFragmentInteractionListener,
-        ActualFragment.OnFragmentInteractionListener,
+        ActualFragment.OnSubmitToServerPressedListener,
         HistoryFragment.OnFragmentInteractionListener {
 
     @Override
@@ -36,19 +37,28 @@ public class MainActivity extends AppCompatActivity implements
         tabs.setupWithViewPager(viewPager);
     }
 
-    @Override public boolean onCreateOptionsMenu(Menu menu) {
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.toolbar_menu, menu);
         return true;
     }
 
-    @Override public boolean onOptionsItemSelected(MenuItem item) {
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.create_user_action) {
             this.startActivity(new Intent(this, CreateUserActivity.class));
         }
         return true;
     }
 
-    @Override public void onFragmentInteraction(Uri uri) {
+    @Override
+    public void onFragmentInteraction(Uri uri) {
         //something
+    }
+
+
+    @Override
+    public void onSubmitToServerPressed(Recycling recycling) {
+
     }
 }

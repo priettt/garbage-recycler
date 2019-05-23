@@ -9,11 +9,13 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.unicen.garbage.R;
+import com.unicen.garbage.domain.entities.Recycling;
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link ActualFragment.OnFragmentInteractionListener} interface
+ * {@link ActualFragment.OnSubmitToServerPressedListener} interface and
+ * {@link ActualFragment.OnSaveLocallyPressedListener} interface
  * to handle interaction events.
  * Use the {@link ActualFragment#newInstance} factory method to
  * create an instance of this fragment.
@@ -28,7 +30,8 @@ public class ActualFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    private OnFragmentInteractionListener mListener;
+    private OnSubmitToServerPressedListener submitToServerListener;
+    private OnSaveLocallyPressedListener saveLocallyListener;
 
     public ActualFragment() {
         // Required empty public constructor
@@ -68,18 +71,30 @@ public class ActualFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_actual, container, false);
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
+    // TODO: Call when button pressed
+    public void onSubmitToServerPressed() {
+        if (submitToServerListener != null) {
+            submitToServerListener.onSubmitToServerPressed(new Recycling(
+                    //TODO: fill with ui data
+            ));
+        }
+    }
+
+    // TODO: Call when button pressed
+    public void onSaveLocallyPressed() {
+        if (saveLocallyListener != null) {
+            saveLocallyListener.onSaveLocallyPressed(new Recycling(
+                    //TODO: fill with ui data
+            ));
         }
     }
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
+        if (context instanceof OnSubmitToServerPressedListener) {
+            submitToServerListener = (OnSubmitToServerPressedListener) context;
+            saveLocallyListener = (OnSaveLocallyPressedListener) context;
         } else {
             throw new RuntimeException(context.toString()
                     + " must implement OnFragmentInteractionListener");
@@ -89,7 +104,8 @@ public class ActualFragment extends Fragment {
     @Override
     public void onDetach() {
         super.onDetach();
-        mListener = null;
+        submitToServerListener = null;
+        saveLocallyListener = null;
     }
 
     /**
@@ -97,13 +113,12 @@ public class ActualFragment extends Fragment {
      * fragment to allow an interaction in this fragment to be communicated
      * to the activity and potentially other fragments contained in that
      * activity.
-     * <p>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
      */
-    public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
+    public interface OnSubmitToServerPressedListener {
+        void onSubmitToServerPressed(Recycling recycling);
+    }
+
+    public interface OnSaveLocallyPressedListener {
+        void onSaveLocallyPressed(Recycling recycling);
     }
 }
