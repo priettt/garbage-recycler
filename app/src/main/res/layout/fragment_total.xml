@@ -1,15 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".ui.main.TotalFragment">
 
     <ProgressBar
         android:id="@+id/total_spinner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:visibility="gone"
-        android:layout_gravity="center" />
+        android:layout_gravity="center"
+        android:visibility="gone" />
 
-</FrameLayout>
+    <android.support.design.widget.TextInputLayout
+        style="@style/TotalLabelLayout"
+        android:hint="@string/bottles">
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/total_bottles"
+            style="@style/TotalLabelTextInput" />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        style="@style/TotalLabelLayout"
+        android:hint="@string/tetrabriks">
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/total_tetrabriks"
+            style="@style/TotalLabelTextInput" />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        style="@style/TotalLabelLayout"
+        android:hint="@string/glass">
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/total_glass"
+            style="@style/TotalLabelTextInput" />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        style="@style/TotalLabelLayout"
+        android:hint="@string/paperboard">
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/total_paperboard"
+            style="@style/TotalLabelTextInput" />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        style="@style/TotalLabelLayout"
+        android:hint="@string/cans">
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/total_cans"
+            style="@style/TotalLabelTextInput" />
+    </android.support.design.widget.TextInputLayout>
+
+</LinearLayout>
