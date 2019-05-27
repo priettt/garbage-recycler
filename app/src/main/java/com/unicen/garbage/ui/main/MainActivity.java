@@ -22,6 +22,7 @@ import com.unicen.garbage.ui.main.TotalFragment;
 public class MainActivity extends AppCompatActivity implements
         TotalFragment.OnFragmentInteractionListener,
         ActualFragment.OnSubmitToServerPressedListener,
+        ActualFragment.OnSaveLocallyPressedListener,
         HistoryFragment.OnFragmentInteractionListener {
 
     @Override
@@ -56,9 +57,13 @@ public class MainActivity extends AppCompatActivity implements
         //something
     }
 
-
     @Override
     public void onSubmitToServerPressed(Recycling recycling) {
+
+    }
+
+    @Override
+    public void onSaveLocallyPressed(Recycling recycling) {
 
     }
 }

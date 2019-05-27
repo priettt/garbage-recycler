@@ -23,4 +23,20 @@
         <item name="android:background">?android:attr/listDivider</item>
     </style>
 
+    <style name="TotalLabelLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">@dimen/total_field_margin_horizontal</item>
+        <item name="android:layout_marginEnd">@dimen/total_field_margin_horizontal</item>
+        <item name="android:layout_marginTop">@dimen/total_field_margin_top</item>
+        <item name="android:focusable">false</item>
+    </style>
+
+    <style name="TotalLabelTextInput">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:text">@string/zero</item>
+        <item name="android:focusable">false</item>
+    </style>
+
 </resources>

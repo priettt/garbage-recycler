@@ -7,4 +7,6 @@
     <dimen name="appbar_padding_top">8dp</dimen>
     <dimen name="create_user_field_margin_top">20dp</dimen>
     <dimen name="create_user_field_margin_horizontal">10dp</dimen>
+    <dimen name="total_field_margin_top">20dp</dimen>
+    <dimen name="total_field_margin_horizontal">10dp</dimen>
 </resources>

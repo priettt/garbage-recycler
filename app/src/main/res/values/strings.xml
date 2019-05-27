@@ -14,7 +14,13 @@
     <string name="city">City</string>
     <string name="state">State</string>
     <string name="zip_code">Zip code</string>
+    <string name="bottles">Bottles</string>
+    <string name="tetrabriks">Tetrabriks</string>
+    <string name="glass">Glass</string>
+    <string name="paperboard">Paperboard</string>
+    <string name="cans">Cans</string>
 
     <string name="create_user_title">Create a new user</string>
+    <string name="zero">0</string>
 
 </resources>
