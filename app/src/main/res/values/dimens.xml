@@ -9,4 +9,8 @@
     <dimen name="create_user_field_margin_horizontal">10dp</dimen>
     <dimen name="total_field_margin_top">20dp</dimen>
     <dimen name="total_field_margin_horizontal">10dp</dimen>
+    <dimen name="actual_field_margin_top">15dp</dimen>
+    <dimen name="actual_field_margin_horizontal">5dp</dimen>
+
+    <dimen name="number_picker_margin_horizontal">15dp</dimen>
 </resources>
