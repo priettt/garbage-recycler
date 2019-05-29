@@ -1,43 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:attrs="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context=".ui.main.ActualFragment">
 
-    <ProgressBar
-        android:id="@+id/actual_spinner"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:visibility="gone" />
+        android:orientation="vertical">
 
-    <com.unicen.garbage.ui.main.HorizontalNumberPicker
-        android:id="@+id/actual_bottles"
-        style="@style/ActualPickerField"
-        attrs:pickerTitle="@string/bottles" />
+        <ProgressBar
+            android:id="@+id/actual_spinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="gone" />
 
-    <com.unicen.garbage.ui.main.HorizontalNumberPicker
-        android:id="@+id/actual_tetrabriks"
-        style="@style/ActualPickerField"
-        attrs:pickerTitle="@string/tetrabriks" />
+        <com.unicen.garbage.ui.main.HorizontalNumberPicker
+            android:id="@+id/actual_bottles"
+            style="@style/ActualPickerField"
+            attrs:pickerTitle="@string/bottles" />
 
-    <com.unicen.garbage.ui.main.HorizontalNumberPicker
-        android:id="@+id/actual_glass"
-        style="@style/ActualPickerField"
-        attrs:pickerTitle="@string/glass" />
+        <com.unicen.garbage.ui.main.HorizontalNumberPicker
+            android:id="@+id/actual_tetrabriks"
+            style="@style/ActualPickerField"
+            attrs:pickerTitle="@string/tetrabriks" />
 
-    <com.unicen.garbage.ui.main.HorizontalNumberPicker
-        android:id="@+id/actual_paperboard"
-        style="@style/ActualPickerField"
-        attrs:pickerTitle="@string/paperboard" />
+        <com.unicen.garbage.ui.main.HorizontalNumberPicker
+            android:id="@+id/actual_glass"
+            style="@style/ActualPickerField"
+            attrs:pickerTitle="@string/glass" />
 
-    <com.unicen.garbage.ui.main.HorizontalNumberPicker
-        android:id="@+id/actual_cans"
-        style="@style/ActualPickerField"
-        attrs:pickerTitle="@string/cans" />
+        <com.unicen.garbage.ui.main.HorizontalNumberPicker
+            android:id="@+id/actual_paperboard"
+            style="@style/ActualPickerField"
+            attrs:pickerTitle="@string/paperboard" />
 
+        <com.unicen.garbage.ui.main.HorizontalNumberPicker
+            android:id="@+id/actual_cans"
+            style="@style/ActualPickerField"
+            attrs:pickerTitle="@string/cans" />
 
-</LinearLayout>
+        <Button
+            android:id="@+id/actual_submit_button"
+            style="@style/ActualButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/actual_field_margin_horizontal"
+            android:layout_marginTop="@dimen/actual_field_margin_top"
+            android:layout_marginEnd="@dimen/actual_field_margin_horizontal"
+            android:text="@string/submit_to_server" />
+
+    </LinearLayout>
+</ScrollView>

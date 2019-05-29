@@ -45,9 +45,10 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:text">@string/zero</item>
         <item name="android:focusable">false</item>
+        <item name="android:longClickable">false</item>
     </style>
 
-    <style name="NumberPickerButton">
+    <style name="NumberPickerButton" parent="@style/Widget.AppCompat.Button.Colored">
         <item name="android:layout_width">0sp</item>
         <item name="android:layout_height">match_parent</item>
         <item name="android:layout_weight">1</item>
@@ -76,5 +77,30 @@
         <item name="android:layout_marginEnd">@dimen/actual_field_margin_horizontal</item>
         <item name="android:layout_marginTop">@dimen/actual_field_margin_top</item>
     </style>
+
+    <style name="ActualButton" parent="@style/Widget.AppCompat.Button.Colored">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">@dimen/actual_field_margin_horizontal</item>
+        <item name="android:layout_marginEnd">@dimen/actual_field_margin_horizontal</item>
+        <item name="android:layout_marginTop">@dimen/actual_field_margin_top</item>
+    </style>
+
+    <style name="CreateUserButton" parent="@style/Widget.AppCompat.Button.Colored">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">@dimen/create_user_field_margin_horizontal</item>
+        <item name="android:layout_marginEnd">@dimen/create_user_field_margin_horizontal</item>
+        <item name="android:layout_marginTop">@dimen/create_user_field_margin_top</item>
+    </style>
+
+    <style name="CreateUserTextLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">@dimen/create_user_field_margin_horizontal</item>
+        <item name="android:layout_marginEnd">@dimen/create_user_field_margin_horizontal</item>
+        <item name="android:layout_marginTop">@dimen/create_user_field_margin_top</item>
+    </style>
+
 
 </resources>
