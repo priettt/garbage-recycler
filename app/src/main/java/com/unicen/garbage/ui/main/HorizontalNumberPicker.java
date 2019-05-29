@@ -16,7 +16,7 @@ import com.unicen.garbage.R;
 public class HorizontalNumberPicker extends LinearLayout {
     private TextInputEditText textInputEditText;
     private TextInputLayout textInputLayout;
-    private int min, max;
+    private int max = 9999;
 
     public HorizontalNumberPicker(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
@@ -32,33 +32,30 @@ public class HorizontalNumberPicker extends LinearLayout {
         textInputLayout.setHint(title);
 
         final Button btn_less = findViewById(R.id.btn_less);
-        btn_less.setOnClickListener(new AddHandler(-1));
+        btn_less.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (textInputEditText.getText() != null) {
+                    int aux = Integer.parseInt(textInputEditText.getText().toString());
+                    if (aux > 0) {
+                        textInputEditText.setText(Integer.toString(aux - 1));
+                    }
+                }
+            }
+        });
 
         final Button btn_more = findViewById(R.id.btn_more);
-        btn_more.setOnClickListener(new AddHandler(1));
-    }
-
-    /***
-     * HANDLERS
-     **/
-
-    private class AddHandler implements OnClickListener {
-        final int diff;
-
-        public AddHandler(int diff) {
-            this.diff = diff;
-        }
-
-        @Override
-        public void onClick(View v) {
-            int newValue = getValue() + diff;
-            if (newValue < min) {
-                newValue = min;
-            } else if (newValue > max) {
-                newValue = max;
+        btn_more.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (textInputEditText.getText() != null) {
+                    int aux = Integer.parseInt(textInputEditText.getText().toString());
+                    if (aux < max) {
+                        textInputEditText.setText(Integer.toString(aux + 1));
+                    }
+                }
             }
-            textInputEditText.setText(String.valueOf(newValue));
-        }
+        });
     }
 
     /***
@@ -81,21 +78,5 @@ public class HorizontalNumberPicker extends LinearLayout {
         if (textInputEditText != null) {
             textInputEditText.setText(String.valueOf(value));
         }
-    }
-
-    public int getMin() {
-        return min;
-    }
-
-    public void setMin(int min) {
-        this.min = min;
-    }
-
-    public int getMax() {
-        return max;
-    }
-
-    public void setMax(int max) {
-        this.max = max;
     }
 }

@@ -66,6 +66,7 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:text">@string/zero</item>
         <item name="android:inputType">number</item>
+        <item name="android:maxLength">4</item>
     </style>
 
     <style name="ActualPickerField">
