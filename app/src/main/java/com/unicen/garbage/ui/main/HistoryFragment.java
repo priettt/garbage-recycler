@@ -20,7 +20,6 @@ import java.util.ArrayList;
 public class HistoryFragment extends Fragment {
 
     public HistoryFragment() {
-        // Required empty public constructor
     }
 
     public static HistoryFragment newInstance() {

@@ -2,6 +2,7 @@ package com.unicen.garbage.ui.main;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
@@ -49,9 +50,13 @@ public class HorizontalNumberPicker extends LinearLayout {
             @Override
             public void onClick(View v) {
                 if (textInputEditText.getText() != null) {
-                    int aux = Integer.parseInt(textInputEditText.getText().toString());
-                    if (aux < max) {
-                        textInputEditText.setText(Integer.toString(aux + 1));
+                    if (textInputEditText.getText().toString().isEmpty()) {
+                        textInputEditText.setText("0");
+                    } else {
+                        int aux = Integer.parseInt(textInputEditText.getText().toString());
+                        if (aux < max) {
+                            textInputEditText.setText(Integer.toString(aux + 1));
+                        }
                     }
                 }
             }
@@ -62,21 +67,23 @@ public class HorizontalNumberPicker extends LinearLayout {
      * GETTERS & SETTERS
      */
 
-    public int getValue() {
+    @NonNull
+    public String getValue() {
         if (textInputEditText != null) {
             try {
-                final String value = textInputEditText.getText().toString();
-                return Integer.parseInt(value);
+                if (textInputEditText.getText() != null) {
+                    return textInputEditText.getText().toString();
+                }
             } catch (NumberFormatException ex) {
                 Log.e("HorizontalNumberPicker", ex.toString());
             }
         }
-        return 0;
+        return "0";
     }
 
-    public void setValue(final int value) {
+    public void setValue(@NonNull String value) {
         if (textInputEditText != null) {
-            textInputEditText.setText(String.valueOf(value));
+            textInputEditText.setText(value);
         }
     }
 }
