@@ -19,6 +19,12 @@ class RecyclingAdapter extends RecyclerView.Adapter<RecyclingAdapter.ViewHolder>
         this.recyclingList = recyclingList;
     }
 
+    public void updateItems(List<Recycling> recycling) {
+        recyclingList.clear();
+        recyclingList.addAll(recycling);
+        notifyDataSetChanged();
+    }
+
     @Override
     @NonNull
     public RecyclingAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {

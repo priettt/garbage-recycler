@@ -26,5 +26,6 @@
     <string name="plus">+</string>
     <string name="submit_to_server">Submit to server</string>
     <string name="history_refresh">Refresh History</string>
+    <string name="total_refresh">Refresh total</string>
 
 </resources>
