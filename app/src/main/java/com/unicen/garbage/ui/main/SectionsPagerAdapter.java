@@ -28,11 +28,11 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         switch (position) {
             case 0:
-                return ActualFragment.newInstance("Hola", "Hola");
+                return ActualFragment.newInstance();
             case 1:
                 return HistoryFragment.newInstance();
             default:
-                return TotalFragment.newInstance("Hola", "Hola");
+                return TotalFragment.newInstance();
         }
     }
 

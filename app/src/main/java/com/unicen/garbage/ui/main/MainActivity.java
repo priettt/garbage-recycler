@@ -1,7 +1,6 @@
 package com.unicen.garbage.ui.main;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
@@ -11,12 +10,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.unicen.garbage.R;
-import com.unicen.garbage.domain.entities.Recycling;
 
-public class MainActivity extends AppCompatActivity implements
-        TotalFragment.OnFragmentInteractionListener,
-        ActualFragment.OnSubmitToServerPressedListener,
-        ActualFragment.OnSaveLocallyPressedListener {
+public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,20 +38,5 @@ public class MainActivity extends AppCompatActivity implements
             this.startActivity(new Intent(this, CreateUserActivity.class));
         }
         return true;
-    }
-
-    @Override
-    public void onFragmentInteraction(Uri uri) {
-        //something
-    }
-
-    @Override
-    public void onSubmitToServerPressed(Recycling recycling) {
-
-    }
-
-    @Override
-    public void onSaveLocallyPressed(Recycling recycling) {
-
     }
 }

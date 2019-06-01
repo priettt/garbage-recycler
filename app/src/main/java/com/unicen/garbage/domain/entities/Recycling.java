@@ -1,5 +1,7 @@
 package com.unicen.garbage.domain.entities;
 
+import android.support.annotation.NonNull;
+
 public class Recycling {
     private String bottles;
     private String tetrabriks;
@@ -8,55 +10,62 @@ public class Recycling {
     private String cans;
     private String date;
 
+    @NonNull
     public String getBottles() {
-        return bottles;
+        return bottles == null ? "" : bottles;
     }
 
-    public void setBottles(String bottles) {
+    public void setBottles(@NonNull String bottles) {
         this.bottles = bottles;
     }
 
+    @NonNull
     public String getTetrabriks() {
-        return tetrabriks;
+        return tetrabriks == null ? "" : tetrabriks;
     }
 
-    public void setTetrabriks(String tetrabriks) {
+    public void setTetrabriks(@NonNull String tetrabriks) {
         this.tetrabriks = tetrabriks;
     }
 
+    @NonNull
     public String getGlass() {
-        return glass;
+        return glass == null ? "" : glass;
     }
 
-    public void setGlass(String glass) {
+    public void setGlass(@NonNull String glass) {
         this.glass = glass;
     }
 
+    @NonNull
     public String getPaperboard() {
-        return paperboard;
+        return paperboard == null ? "" : paperboard;
     }
 
-    public void setPaperboard(String paperboard) {
+    public void setPaperboard(@NonNull String paperboard) {
         this.paperboard = paperboard;
     }
 
+    @NonNull
     public String getCans() {
-        return cans;
+        return cans == null ? "" : cans;
     }
 
-    public void setCans(String cans) {
+    public void setCans(@NonNull String cans) {
         this.cans = cans;
     }
 
+    @NonNull
     public String getDate() {
-        return date;
+        return date == null ? "" : bottles;
     }
 
-    public void setDate(String date) {
+    public void setDate(@NonNull String date) {
         this.date = date;
     }
 
-    public Recycling(String bottles, String tetrabriks, String glass, String paperboard, String cans, String date) {
+    public Recycling(@NonNull String bottles, @NonNull String tetrabriks, @NonNull String glass, @NonNull String paperboard,
+                     @NonNull String cans, @NonNull String date) {
         this.bottles = bottles;
         this.tetrabriks = tetrabriks;
         this.glass = glass;

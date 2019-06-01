@@ -24,7 +24,7 @@
     <string name="zero">0</string>
     <string name="minus">-</string>
     <string name="plus">+</string>
-    <string name="submit_to_server">Submit to server</string>
+    <string name="submit_to_server">Submit recycling to server</string>
     <string name="history_refresh">Refresh History</string>
     <string name="total_refresh">Refresh total</string>
 
