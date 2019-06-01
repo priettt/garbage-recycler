@@ -30,7 +30,7 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
             case 0:
                 return ActualFragment.newInstance("Hola", "Hola");
             case 1:
-                return HistoryFragment.newInstance("Hola", "Hola");
+                return HistoryFragment.newInstance();
             default:
                 return TotalFragment.newInstance("Hola", "Hola");
         }
