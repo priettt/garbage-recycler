@@ -10,6 +10,16 @@ public class Recycling {
     private String cans;
     private String date;
 
+    public Recycling(@NonNull String bottles, @NonNull String tetrabriks, @NonNull String glass, @NonNull String paperboard,
+                     @NonNull String cans, @NonNull String date) {
+        this.bottles = bottles;
+        this.tetrabriks = tetrabriks;
+        this.glass = glass;
+        this.paperboard = paperboard;
+        this.cans = cans;
+        this.date = date;
+    }
+
     @NonNull
     public String getBottles() {
         return bottles == null ? "" : bottles;
@@ -61,16 +71,6 @@ public class Recycling {
     }
 
     public void setDate(@NonNull String date) {
-        this.date = date;
-    }
-
-    public Recycling(@NonNull String bottles, @NonNull String tetrabriks, @NonNull String glass, @NonNull String paperboard,
-                     @NonNull String cans, @NonNull String date) {
-        this.bottles = bottles;
-        this.tetrabriks = tetrabriks;
-        this.glass = glass;
-        this.paperboard = paperboard;
-        this.cans = cans;
         this.date = date;
     }
 

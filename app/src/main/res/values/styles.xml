@@ -102,5 +102,4 @@
         <item name="android:layout_marginTop">@dimen/create_user_field_margin_top</item>
     </style>
 
-
 </resources>

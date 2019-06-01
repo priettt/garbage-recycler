@@ -12,9 +12,6 @@ public abstract class RecyclingRepository {
 
     private static final String SHARED_PREFERENCES = "com.unicen.garbage.SHARED_PREFERENCES";
 
-    //TODO: implement with proper parameters and return types, calling the database and service classes
-    abstract void getTotalRecycling();       //asks for the total recycling from the server.
-
     public static ArrayList<Recycling> getRecyclingHistory() {
         //asks the server the recyclings history.
         ArrayList<Recycling> aux = new ArrayList<>();
@@ -23,8 +20,6 @@ public abstract class RecyclingRepository {
         aux.add(new Recycling("hola", "hola", "hola", "hola", "hola", "hola"));
         return aux;
     }
-
-    abstract void createNewUser();           //calls the server to create a new user.
 
     public static void saveRecyclingInPreferences(Context context, Recycling recycling) {
         SharedPreferences sharedPreferences = context.getSharedPreferences(SHARED_PREFERENCES, Context.MODE_PRIVATE);
@@ -44,4 +39,9 @@ public abstract class RecyclingRepository {
         }
         return null;
     }
+
+    //TODO: implement with proper parameters and return types, calling the database and service classes
+    abstract void getTotalRecycling();       //asks for the total recycling from the server.
+
+    abstract void createNewUser();           //calls the server to create a new user.
 }
