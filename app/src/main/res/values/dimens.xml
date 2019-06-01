@@ -12,6 +12,9 @@
     <dimen name="actual_field_margin_top">15dp</dimen>
     <dimen name="actual_field_margin_horizontal">5dp</dimen>
 
+    <dimen name="wide_button_margin_top">15dp</dimen>
+    <dimen name="wide_button_margin_horizontal">5dp</dimen>
+
     <dimen name="number_picker_margin_horizontal">15dp</dimen>
     <dimen name="history_item_text_margin_top">10dp</dimen>
     <dimen name="history_item_text_margin_horizontal">10dp</dimen>

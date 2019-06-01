@@ -45,7 +45,7 @@
 
         <Button
             android:id="@+id/actual_submit_button"
-            style="@style/ActualButton"
+            style="@style/WideButton"
             android:text="@string/submit_to_server" />
 
     </LinearLayout>

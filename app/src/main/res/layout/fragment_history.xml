@@ -1,26 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".ui.main.TotalFragment">
 
-    <android.support.v7.widget.RecyclerView xmlns:app="http://schemas.android.com/apk/res-auto"
+    <Button
+        android:id="@+id/history_refresh_button"
+        style="@style/WideButton"
+        android:text="@string/history_refresh" />
+
+    <android.support.v7.widget.RecyclerView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/history_recycler"
         android:name="com.unicen.garbage.ui.main.HistoryFragment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/history_recycler_margin_horizontal"
+        android:layout_marginTop="@dimen/history_item_text_margin_top"
         android:layout_marginEnd="@dimen/history_recycler_margin_horizontal"
         app:layoutManager="LinearLayoutManager"
         tools:context=".ui.main.HistoryFragment"
         tools:listitem="@layout/history_item" />
-
-    <Button
-        android:id="@+id/history_refresh_button"
-        style="@style/ActualButton"
-        android:text="@string/history_refresh" />
 
 </LinearLayout>
 

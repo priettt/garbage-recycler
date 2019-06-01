@@ -78,12 +78,12 @@
         <item name="android:layout_marginTop">@dimen/actual_field_margin_top</item>
     </style>
 
-    <style name="ActualButton" parent="@style/Widget.AppCompat.Button.Colored">
+    <style name="WideButton" parent="@style/Widget.AppCompat.Button.Colored">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_marginStart">@dimen/actual_field_margin_horizontal</item>
-        <item name="android:layout_marginEnd">@dimen/actual_field_margin_horizontal</item>
-        <item name="android:layout_marginTop">@dimen/actual_field_margin_top</item>
+        <item name="android:layout_marginStart">@dimen/wide_button_margin_horizontal</item>
+        <item name="android:layout_marginEnd">@dimen/wide_button_margin_horizontal</item>
+        <item name="android:layout_marginTop">@dimen/wide_button_margin_top</item>
     </style>
 
     <style name="CreateUserButton" parent="@style/Widget.AppCompat.Button.Colored">
