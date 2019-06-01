@@ -7,23 +7,16 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import com.unicen.garbage.R;
 import com.unicen.garbage.domain.entities.Recycling;
-import com.unicen.garbage.ui.main.ActualFragment;
-import com.unicen.garbage.ui.main.CreateUserActivity;
-import com.unicen.garbage.ui.main.HistoryFragment;
-import com.unicen.garbage.ui.main.SectionsPagerAdapter;
-import com.unicen.garbage.ui.main.TotalFragment;
 
 public class MainActivity extends AppCompatActivity implements
         TotalFragment.OnFragmentInteractionListener,
         ActualFragment.OnSubmitToServerPressedListener,
-        ActualFragment.OnSaveLocallyPressedListener,
-        HistoryFragment.OnFragmentInteractionListener {
+        ActualFragment.OnSaveLocallyPressedListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -1,7 +1,6 @@
 package com.unicen.garbage.ui.main;
 
 import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -74,18 +73,16 @@ public class ActualFragment extends Fragment {
     // TODO: Call when button pressed
     public void onSubmitToServerPressed() {
         if (submitToServerListener != null) {
-            submitToServerListener.onSubmitToServerPressed(new Recycling(
-                    //TODO: fill with ui data
-            ));
+            submitToServerListener.onSubmitToServerPressed(
+                    new Recycling("hola", "hola", "hola", "hola", "hola", "hola"));
         }
     }
 
     // TODO: Call when button pressed
     public void onSaveLocallyPressed() {
         if (saveLocallyListener != null) {
-            saveLocallyListener.onSaveLocallyPressed(new Recycling(
-                    //TODO: fill with ui data
-            ));
+            saveLocallyListener.onSaveLocallyPressed(
+                    new Recycling("hola", "hola", "hola", "hola", "hola", "hola"));
         }
     }
 
