@@ -73,6 +73,11 @@ public class ActualFragment extends Fragment {
                 RecyclingRepository.submitRecyclingToServer(new Recycling(bottlePicker.getValue(), tetrabrikPicker.getValue(),
                         glassPicker.getValue(), paperboardPicker.getValue(), cansPicker.getValue(),
                         Calendar.getInstance().getTime().toString()));
+                bottlePicker.setValue("0");
+                tetrabrikPicker.setValue("0");
+                glassPicker.setValue("0");
+                paperboardPicker.setValue("0");
+                cansPicker.setValue("0");
             }
         });
         return view;
