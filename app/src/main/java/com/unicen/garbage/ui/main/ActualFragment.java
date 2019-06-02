@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.unicen.garbage.R;
 import com.unicen.garbage.domain.RecyclingRepository;
@@ -66,6 +67,14 @@ public class ActualFragment extends Fragment {
         glassPicker = view.findViewById(R.id.actual_glass);
         paperboardPicker = view.findViewById(R.id.actual_paperboard);
         cansPicker = view.findViewById(R.id.actual_cans);
+        Button submitButton = view.findViewById(R.id.actual_submit_button);
+        submitButton.setOnClickListener(new View.OnClickListener() {
+            @Override public void onClick(View v) {
+                RecyclingRepository.submitRecyclingToServer(new Recycling(bottlePicker.getValue(), tetrabrikPicker.getValue(),
+                        glassPicker.getValue(), paperboardPicker.getValue(), cansPicker.getValue(),
+                        Calendar.getInstance().getTime().toString()));
+            }
+        });
         return view;
     }
 }
