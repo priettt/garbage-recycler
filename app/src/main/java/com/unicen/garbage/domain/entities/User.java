@@ -1,6 +1,7 @@
 package com.unicen.garbage.domain.entities;
 
 public class User {
+    private String address;
     private String firstName;
     private String lastName;
     private String email;
@@ -22,10 +23,15 @@ public class User {
         return username;
     }
 
-    public User(String firstName, String lastName, String email, String username) {
+    public String getAddress() {
+        return address;
+    }
+
+    public User(String firstName, String lastName, String email, String username, String address) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.username = username;
+        this.address = address;
     }
 }

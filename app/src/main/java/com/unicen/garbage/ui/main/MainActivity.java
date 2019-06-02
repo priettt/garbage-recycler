@@ -10,6 +10,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.unicen.garbage.R;
+import com.unicen.garbage.domain.RecyclingRepository;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -24,6 +25,10 @@ public class MainActivity extends AppCompatActivity {
         viewPager.setAdapter(sectionsPagerAdapter);
         TabLayout tabs = findViewById(R.id.tabs);
         tabs.setupWithViewPager(viewPager);
+        String user = RecyclingRepository.getUser(getApplicationContext());
+        if (user.isEmpty()) {
+            this.startActivity(new Intent(this, CreateUserActivity.class));
+        }
     }
 
     @Override
