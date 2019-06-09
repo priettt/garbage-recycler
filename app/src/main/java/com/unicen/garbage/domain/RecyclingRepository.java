@@ -4,12 +4,18 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 import com.google.gson.Gson;
+import com.unicen.garbage.data.GarbageService;
+import com.unicen.garbage.data.GarbageServiceGenerator;
 import com.unicen.garbage.domain.entities.Recycling;
 import com.unicen.garbage.domain.entities.User;
 
 import java.util.ArrayList;
 
-public abstract class RecyclingRepository {
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
+public class RecyclingRepository {
 
     private static final String ACTUAL_SHARED_PREFERENCES = "com.unicen.garbage.ACTUAL_SHARED_PREFERENCES";
     private static final String USERNAME_SHARED_PREFERENCES = "com.unicen.garbage.USERNAME_SHARED_PREFERENCES";
@@ -42,12 +48,15 @@ public abstract class RecyclingRepository {
         return null;
     }
 
-    public static Recycling getTotalRecycling() {
-        //TODO: implement
-        return new Recycling("4", "1", "4", "1", "4", "1");
+    public static Call<Recycling> getTotalRecycling() {
+        return GarbageServiceGenerator.createService(GarbageService.class).getTotalRecycling();
     }
 
-    public static void createNewUser(Context context, User user) {
+    public static Call<User> saveUserInServer(User user) {
+        return GarbageServiceGenerator.createService(GarbageService.class).registerUser(user);
+    }
+
+    public static void saveUserInPreferences(User user, Context context) {
         SharedPreferences userSharedPreferences = context.getSharedPreferences(USERNAME_SHARED_PREFERENCES, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = userSharedPreferences.edit();
         editor.putString("Username", user.getUsername());

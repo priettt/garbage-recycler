@@ -1,14 +1,27 @@
 package com.unicen.garbage.domain.entities;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 public class User {
-    private String address;
-    private String firstName;
+    @SerializedName("name")
+    @Expose
+    private String name;
+    @SerializedName("lastName")
+    @Expose
     private String lastName;
-    private String email;
+    @SerializedName("address")
+    @Expose
+    private String address;
+    @SerializedName("username")
+    @Expose
     private String username;
+    @SerializedName("mail")
+    @Expose
+    private String mail;
 
     public String getFirstName() {
-        return firstName;
+        return name;
     }
 
     public String getLastName() {
@@ -16,7 +29,7 @@ public class User {
     }
 
     public String getEmail() {
-        return email;
+        return mail;
     }
 
     public String getUsername() {
@@ -28,9 +41,9 @@ public class User {
     }
 
     public User(String firstName, String lastName, String email, String username, String address) {
-        this.firstName = firstName;
+        this.name = firstName;
         this.lastName = lastName;
-        this.email = email;
+        this.mail = email;
         this.username = username;
         this.address = address;
     }
