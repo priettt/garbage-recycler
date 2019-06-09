@@ -12,6 +12,10 @@ import com.unicen.garbage.R;
 import com.unicen.garbage.domain.RecyclingRepository;
 import com.unicen.garbage.domain.entities.User;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class CreateUserActivity extends AppCompatActivity {
 
     private TextInputEditText firstNameText;
@@ -41,12 +45,27 @@ public class CreateUserActivity extends AppCompatActivity {
             @Override public void onClick(View v) {
                 if (firstNameText.getText() != null && lastNameText.getText() != null && emailText.getText() != null &&
                         usernameText.getText() != null && addressText.getText() != null && !usernameText.getText().toString().isEmpty()) {
-                    RecyclingRepository.createNewUser(getApplicationContext(),
-                            new User(firstNameText.getText().toString(), lastNameText.getText().toString(),
-                                    emailText.getText().toString(), usernameText.getText().toString(), addressText.getText().toString()));
-                    finish();
+                    Call<User> userCall = RecyclingRepository.saveUserInServer(new User(firstNameText.getText().toString(),
+                            lastNameText.getText().toString(), emailText.getText().toString(), usernameText.getText().toString(),
+                            addressText.getText().toString()));
+
+                    userCall.enqueue(new Callback<User>() {
+                        @Override public void onResponse(Call<User> call, Response<User> response) {
+                            if (response.isSuccessful() && response.body() != null) {
+                                RecyclingRepository.saveUserInPreferences(response.body(), getApplicationContext());
+                                Toast.makeText(getApplicationContext(), "User succesfully created", Toast.LENGTH_SHORT).show();
+                                finish();
+                            } else {
+                                showError();
+                            }
+                        }
+
+                        @Override public void onFailure(Call<User> call, Throwable t) {
+                            showError();
+                        }
+                    });
                 } else {
-                    Toast.makeText(CreateUserActivity.this, "Something went wrong, try again!", Toast.LENGTH_SHORT).show();
+                    showError();
                 }
             }
         });
@@ -55,5 +74,9 @@ public class CreateUserActivity extends AppCompatActivity {
     @Override public boolean onSupportNavigateUp() {
         finish();
         return true;
+    }
+
+    private void showError() {
+        Toast.makeText(CreateUserActivity.this, "Something went wrong, try again!", Toast.LENGTH_SHORT).show();
     }
 }

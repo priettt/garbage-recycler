@@ -8,10 +8,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.unicen.garbage.R;
 import com.unicen.garbage.domain.RecyclingRepository;
 import com.unicen.garbage.domain.entities.Recycling;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class TotalFragment extends Fragment {
 
@@ -45,14 +50,22 @@ public class TotalFragment extends Fragment {
         Button refreshButton = view.findViewById(R.id.total_refresh_button);
         refreshButton.setOnClickListener(new View.OnClickListener() {
             @Override public void onClick(View v) {
-                Recycling totalRecycling = RecyclingRepository.getTotalRecycling();
-                if (totalRecycling != null) {
-                    bottleText.setText(totalRecycling.getBottles());
-                    tetrabrikText.setText(totalRecycling.getTetrabriks());
-                    glassText.setText(totalRecycling.getGlass());
-                    paperboardText.setText(totalRecycling.getPaperboard());
-                    cansText.setText(totalRecycling.getCans());
-                }
+                Call<Recycling> totalRecycling = RecyclingRepository.getTotalRecycling();
+                totalRecycling.enqueue(new Callback<Recycling>() {
+                    @Override public void onResponse(Call<Recycling> call, Response<Recycling> response) {
+                        if (response.body() != null) {
+                            bottleText.setText(response.body().getBottles());
+                            tetrabrikText.setText(response.body().getTetrabriks());
+                            glassText.setText(response.body().getGlass());
+                            paperboardText.setText(response.body().getPaperboard());
+                            cansText.setText(response.body().getCans());
+                        }
+                    }
+
+                    @Override public void onFailure(Call<Recycling> call, Throwable t) {
+                        Toast.makeText(getContext(), "Server error. Try again later.", Toast.LENGTH_SHORT).show();
+                    }
+                });
             }
         });
 
