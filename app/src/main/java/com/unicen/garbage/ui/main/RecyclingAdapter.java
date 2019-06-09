@@ -45,7 +45,7 @@ class RecyclingAdapter extends RecyclerView.Adapter<RecyclingAdapter.ViewHolder>
         } catch (ParseException e) {
             holder.dateTextView.setText("No date info.");
         }
-        holder.recyclingTextView.setText(recyclingList.get(position).getRecyclingString());
+        holder.recyclingTextView.setText(recyclingList.get(position).toString());
     }
 
     @Override

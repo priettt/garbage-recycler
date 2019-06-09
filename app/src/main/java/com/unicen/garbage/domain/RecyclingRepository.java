@@ -61,7 +61,8 @@ public class RecyclingRepository {
         return userSharedPreferences.getString("Username", "");
     }
 
-    public static void submitRecyclingToServer(Recycling recycling) {
-        //TODO: implement
+    public static Call<Recycling> submitRecyclingToServer(Recycling recycling, Context context) {
+        recycling.setUsername(getUserFromPreferences(context));
+        return GarbageServiceGenerator.createService(GarbageService.class).registerRecycling(recycling);
     }
 }
