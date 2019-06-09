@@ -21,5 +21,8 @@ public interface GarbageService {
     @POST("/api/personas/")
     Call<User> registerUser(@Body User user);
 
+    @POST("/api/userrecyclings/")
+    Call<Recycling> registerRecycling(@Body Recycling recycling);
+
 }
 

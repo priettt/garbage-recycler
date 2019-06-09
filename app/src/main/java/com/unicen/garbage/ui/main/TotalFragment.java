@@ -54,21 +54,27 @@ public class TotalFragment extends Fragment {
                 totalRecycling.enqueue(new Callback<Recycling>() {
                     @Override public void onResponse(Call<Recycling> call, Response<Recycling> response) {
                         if (response.body() != null) {
-                            bottleText.setText(response.body().getBottles());
-                            tetrabrikText.setText(response.body().getTetrabriks());
-                            glassText.setText(response.body().getGlass());
-                            paperboardText.setText(response.body().getPaperboard());
-                            cansText.setText(response.body().getCans());
+                            bottleText.setText(response.body().getBottles().toString());
+                            tetrabrikText.setText(response.body().getTetrabriks().toString());
+                            glassText.setText(response.body().getGlass().toString());
+                            paperboardText.setText(response.body().getPaperboard().toString());
+                            cansText.setText(response.body().getCans().toString());
+                        } else {
+                            showError();
                         }
                     }
 
                     @Override public void onFailure(Call<Recycling> call, Throwable t) {
-                        Toast.makeText(getContext(), "Server error. Try again later.", Toast.LENGTH_SHORT).show();
+                        showError();
                     }
                 });
             }
         });
 
         return view;
+    }
+
+    private void showError() {
+        Toast.makeText(getContext(), "Something went wrong, try again!", Toast.LENGTH_SHORT).show();
     }
 }

@@ -8,12 +8,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.unicen.garbage.R;
 import com.unicen.garbage.domain.RecyclingRepository;
 import com.unicen.garbage.domain.entities.Recycling;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class ActualFragment extends Fragment {
 
@@ -40,7 +47,8 @@ public class ActualFragment extends Fragment {
         Context context = getContext();
         if (context != null) {
             RecyclingRepository.saveRecyclingInPreferences(getContext(), new Recycling(bottlePicker.getValue(), tetrabrikPicker.getValue(),
-                    glassPicker.getValue(), paperboardPicker.getValue(), cansPicker.getValue(), Calendar.getInstance().getTime().toString()));
+                    glassPicker.getValue(), paperboardPicker.getValue(), cansPicker.getValue(), null,
+                    null));
         }
     }
 
@@ -70,16 +78,33 @@ public class ActualFragment extends Fragment {
         Button submitButton = view.findViewById(R.id.actual_submit_button);
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override public void onClick(View v) {
-                RecyclingRepository.submitRecyclingToServer(new Recycling(bottlePicker.getValue(), tetrabrikPicker.getValue(),
-                        glassPicker.getValue(), paperboardPicker.getValue(), cansPicker.getValue(),
-                        Calendar.getInstance().getTime().toString()));
-                bottlePicker.setValue("0");
-                tetrabrikPicker.setValue("0");
-                glassPicker.setValue("0");
-                paperboardPicker.setValue("0");
-                cansPicker.setValue("0");
+                SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+                Call<Recycling> recyclingCall = RecyclingRepository.submitRecyclingToServer(new Recycling(bottlePicker.getValue(),
+                        tetrabrikPicker.getValue(), glassPicker.getValue(), paperboardPicker.getValue(), cansPicker.getValue(),
+                        null, format.format(new Date())), getContext());
+                recyclingCall.enqueue(new Callback<Recycling>() {
+                    @Override public void onResponse(Call<Recycling> call, Response<Recycling> response) {
+                        if (response.isSuccessful() && response.body() != null) {
+                            bottlePicker.setValue(0);
+                            tetrabrikPicker.setValue(0);
+                            glassPicker.setValue(0);
+                            paperboardPicker.setValue(0);
+                            cansPicker.setValue(0);
+                        } else {
+                            showError();
+                        }
+                    }
+
+                    @Override public void onFailure(Call<Recycling> call, Throwable t) {
+                        showError();
+                    }
+                });
             }
         });
         return view;
+    }
+
+    private void showError() {
+        Toast.makeText(getContext(), "Something went wrong, try again!", Toast.LENGTH_SHORT).show();
     }
 }

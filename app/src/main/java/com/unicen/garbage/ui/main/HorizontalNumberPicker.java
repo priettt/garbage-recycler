@@ -68,22 +68,22 @@ public class HorizontalNumberPicker extends LinearLayout {
      */
 
     @NonNull
-    public String getValue() {
+    public Integer getValue() {
         if (textInputEditText != null) {
             try {
                 if (textInputEditText.getText() != null) {
-                    return textInputEditText.getText().toString();
+                    return Integer.parseInt(textInputEditText.getText().toString());
                 }
             } catch (NumberFormatException ex) {
                 Log.e("HorizontalNumberPicker", ex.toString());
             }
         }
-        return "0";
+        return 0;
     }
 
-    public void setValue(@NonNull String value) {
+    public void setValue(@NonNull Integer value) {
         if (textInputEditText != null) {
-            textInputEditText.setText(value);
+            textInputEditText.setText(value.toString());
         }
     }
 }
