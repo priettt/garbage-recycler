@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
         viewPager.setAdapter(sectionsPagerAdapter);
         TabLayout tabs = findViewById(R.id.tabs);
         tabs.setupWithViewPager(viewPager);
-        String user = RecyclingRepository.getUser(getApplicationContext());
+        String user = RecyclingRepository.getUserFromPreferences(getApplicationContext());
         if (user.isEmpty()) {
             this.startActivity(new Intent(this, CreateUserActivity.class));
         }

@@ -10,6 +10,9 @@ import android.widget.TextView;
 import com.unicen.garbage.R;
 import com.unicen.garbage.domain.entities.Recycling;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 class RecyclingAdapter extends RecyclerView.Adapter<RecyclingAdapter.ViewHolder> {
@@ -35,7 +38,13 @@ class RecyclingAdapter extends RecyclerView.Adapter<RecyclingAdapter.ViewHolder>
     @Override
     public void onBindViewHolder(@NonNull final RecyclingAdapter.ViewHolder holder, int position) {
         holder.recyclingItem = recyclingList.get(position);
-        holder.dateTextView.setText(recyclingList.get(position).getDate());
+        try {
+            Date date = new SimpleDateFormat("yyyy-MM-dd").parse(recyclingList.get(position).getDate());
+            String formattedDate = new SimpleDateFormat("yyyy-MM-dd").format(date);
+            holder.dateTextView.setText(formattedDate);
+        } catch (ParseException e) {
+            holder.dateTextView.setText("No date info.");
+        }
         holder.recyclingTextView.setText(recyclingList.get(position).getRecyclingString());
     }
 

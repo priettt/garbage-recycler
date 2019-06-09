@@ -9,24 +9,17 @@ import com.unicen.garbage.data.GarbageServiceGenerator;
 import com.unicen.garbage.domain.entities.Recycling;
 import com.unicen.garbage.domain.entities.User;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class RecyclingRepository {
 
     private static final String ACTUAL_SHARED_PREFERENCES = "com.unicen.garbage.ACTUAL_SHARED_PREFERENCES";
     private static final String USERNAME_SHARED_PREFERENCES = "com.unicen.garbage.USERNAME_SHARED_PREFERENCES";
 
-    public static ArrayList<Recycling> getRecyclingHistory() {
-        //TODO: Implement
-        ArrayList<Recycling> aux = new ArrayList<>();
-        aux.add(new Recycling("hola", "hola", "hola", "hola", "hola", "hola"));
-        aux.add(new Recycling("hola", "hola", "hola", "hola", "hola", "hola"));
-        aux.add(new Recycling("hola", "hola", "hola", "hola", "hola", "hola"));
-        return aux;
+    public static Call<List<Recycling>> getRecyclingHistory(Context context) {
+        return GarbageServiceGenerator.createService(GarbageService.class).getUserRecyclingHistory(getUserFromPreferences(context));
     }
 
     public static void saveRecyclingInPreferences(Context context, Recycling recycling) {
@@ -63,7 +56,7 @@ public class RecyclingRepository {
         editor.apply();
     }
 
-    public static String getUser(Context context) {
+    public static String getUserFromPreferences(Context context) {
         SharedPreferences userSharedPreferences = context.getSharedPreferences(USERNAME_SHARED_PREFERENCES, Context.MODE_PRIVATE);
         return userSharedPreferences.getString("Username", "");
     }
