@@ -37,7 +37,7 @@ public class Recycling {
 
     @NonNull
     public String getDate() {
-        return date == null ? "" : bottles;
+        return date == null ? "" : date;
     }
 
     public Recycling(@NonNull String bottles, @NonNull String tetrabriks, @NonNull String glass, @NonNull String paperboard,

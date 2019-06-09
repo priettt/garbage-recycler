@@ -20,5 +20,6 @@ public interface GarbageService {
 
     @POST("/api/personas/")
     Call<User> registerUser(@Body User user);
+
 }
 
