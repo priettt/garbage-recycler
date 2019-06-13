@@ -23,6 +23,7 @@ public class CreateUserActivity extends AppCompatActivity {
     private TextInputEditText emailText;
     private TextInputEditText usernameText;
     private TextInputEditText addressText;
+    private final static int NOT_ACCEPTABLE = 406;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +43,8 @@ public class CreateUserActivity extends AppCompatActivity {
 
         Button submitButton = findViewById(R.id.create_user_submit_button);
         submitButton.setOnClickListener(new View.OnClickListener() {
-            @Override public void onClick(View v) {
+            @Override
+            public void onClick(View v) {
                 if (firstNameText.getText() != null && lastNameText.getText() != null && emailText.getText() != null &&
                         usernameText.getText() != null && addressText.getText() != null && !usernameText.getText().toString().isEmpty()) {
                     Call<User> userCall = RecyclingRepository.saveUserInServer(new User(firstNameText.getText().toString(),
@@ -50,17 +52,22 @@ public class CreateUserActivity extends AppCompatActivity {
                             addressText.getText().toString()));
 
                     userCall.enqueue(new Callback<User>() {
-                        @Override public void onResponse(Call<User> call, Response<User> response) {
+                        @Override
+                        public void onResponse(Call<User> call, Response<User> response) {
                             if (response.isSuccessful() && response.body() != null) {
                                 RecyclingRepository.saveUserInPreferences(response.body(), getApplicationContext());
                                 Toast.makeText(getApplicationContext(), "User succesfully created", Toast.LENGTH_SHORT).show();
                                 finish();
                             } else {
-                                showError();
+                                if (response.code() == NOT_ACCEPTABLE)
+                                    showErrorAlreadyRegistered();
+                                else
+                                    showError();
                             }
                         }
 
-                        @Override public void onFailure(Call<User> call, Throwable t) {
+                        @Override
+                        public void onFailure(Call<User> call, Throwable t) {
                             showError();
                         }
                     });
@@ -71,12 +78,17 @@ public class CreateUserActivity extends AppCompatActivity {
         });
     }
 
-    @Override public boolean onSupportNavigateUp() {
+    @Override
+    public boolean onSupportNavigateUp() {
         finish();
         return true;
     }
 
     private void showError() {
         Toast.makeText(CreateUserActivity.this, "Something went wrong, try again!", Toast.LENGTH_SHORT).show();
+    }
+
+    private void showErrorAlreadyRegistered() {
+        Toast.makeText(CreateUserActivity.this, "That username is already in use", Toast.LENGTH_SHORT).show();
     }
 }
