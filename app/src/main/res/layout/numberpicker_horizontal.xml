@@ -11,15 +11,15 @@
         style="@style/NumberPickerButton"
         android:text="@string/minus" />
 
-    <android.support.design.widget.TextInputLayout
+    <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/numberpick_input_layout"
         style="@style/NumberPickerTextLayout">
 
-        <android.support.design.widget.TextInputEditText
+        <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/numberpick_edit"
             style="@style/NumberPickerTextInput"
             android:inputType="number" />
-    </android.support.design.widget.TextInputLayout>
+    </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:id="@+id/btn_more"
